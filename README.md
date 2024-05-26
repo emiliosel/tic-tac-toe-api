@@ -54,7 +54,7 @@ $ yarn run start:prod
 
 ## Api documentation
 
-[Swagger](http://localhost:3001/api)
+After starting the application you can find api documentation here: [Swagger](http://localhost:3001/api)
 
 ## Test
 

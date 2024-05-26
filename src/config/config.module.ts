@@ -1,4 +1,3 @@
-// src/config/config.module.ts
 import { Global, Module } from '@nestjs/common';
 import { AppConfigService } from './config.service';
 import * as dotenv from 'dotenv';

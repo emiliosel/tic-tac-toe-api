@@ -1,5 +1,9 @@
 import { Schema, Document, Connection } from 'mongoose';
-import { GameStatus, Move, Player } from 'src/domain/game/entities/game.entity';
+import {
+  GameStatus,
+  Move,
+  Player,
+} from '../../../domain/game/entities/game.entity';
 import { v4 as uuidv4 } from 'uuid';
 
 export interface GameDocument extends Document {
@@ -11,11 +15,14 @@ export interface GameDocument extends Document {
   winner: Player | null;
 }
 
-export const MoveSchema = new Schema<Move>({
-  player: { type: String, enum: Object.values(Player), required: true },
-  row: { type: Number, required: true },
-  column: { type: Number, required: true },
-});
+export const MoveSchema = new Schema<Move>(
+  {
+    player: { type: String, enum: Object.values(Player), required: true },
+    row: { type: Number, required: true },
+    column: { type: Number, required: true },
+  },
+  { _id: false },
+);
 
 export const GameSchema = new Schema<GameDocument>({
   _id: { type: String, default: () => uuidv4() },

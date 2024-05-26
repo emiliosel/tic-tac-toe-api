@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { GameStatus } from 'src/domain/game/entities/game.entity';
+import { GameStatus } from '../../domain/game/entities/game.entity';
 
 export class GetFinishedGamesInputDto {
   @ApiProperty({

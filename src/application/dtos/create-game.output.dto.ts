@@ -1,7 +1,5 @@
-// src/application/use-cases/dto/create-game-output.dto.ts
-
 import { ApiProperty } from '@nestjs/swagger';
-import { GameStatus, Player } from 'src/domain/game/entities/game.entity';
+import { GameStatus, Player } from '../../domain/game/entities/game.entity';
 
 export class CreateGameOutputDto {
   @ApiProperty({ description: 'Unique ID of the game', example: 'unique-id' })

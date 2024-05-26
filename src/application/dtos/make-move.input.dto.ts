@@ -1,6 +1,6 @@
 import { IsString, IsInt, Min, IsEnum } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { Player } from 'src/domain/game/entities/game.entity';
+import { Player } from '../../domain/game/entities/game.entity';
 
 export class MakeMoveInputDto {
   @ApiProperty({ description: 'ID of the game', example: 'game-id' })

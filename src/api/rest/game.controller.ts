@@ -19,10 +19,10 @@ import { CreateGameInputDto } from '../../application/dtos/create-game.input.dto
 import { CreateGameOutputDto } from '../../application/dtos/create-game.output.dto';
 import { MakeMoveInputDto } from '../../application/dtos/make-move.input.dto';
 import { MakeMoveOutputDto } from '../../application/dtos/make-move.output.dto';
-import { PROVIDERS } from 'src/constants';
-import { GetFinishedGamesUseCase } from 'src/application/use-cases/get-finished-games.usecase';
-import { GetFinishedGamesInputDto } from 'src/application/dtos/get-finished-games.input.dto';
-import { GetFinishedGamesOutputDto } from 'src/application/dtos/get-finished-games.output.dto';
+import { PROVIDERS } from '../../constants';
+import { GetFinishedGamesUseCase } from '../../application/use-cases/get-finished-games.usecase';
+import { GetFinishedGamesInputDto } from '../../application/dtos/get-finished-games.input.dto';
+import { GetFinishedGamesOutputDto } from '../../application/dtos/get-finished-games.output.dto';
 
 @ApiTags('games')
 @Controller('games')

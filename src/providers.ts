@@ -5,17 +5,17 @@ import { GameMongoooseModelFactory } from './infrastructure/database/schemas/gam
 import { AppConfigService } from './config/config.service';
 import { MongooseConnectionFactory } from './infrastructure/database/factories/MongooseConnectionFactory';
 import { PROVIDERS } from './constants';
+import { CreateGameUseCase } from './application/use-cases/create-game.usecase';
+import { MakeMoveUseCase } from './application/use-cases/make-move.usecase';
+import { GetFinishedGamesUseCase } from './application/use-cases/get-finished-games.usecase';
 
-export const databaseProviders: Provider[] = [
+export const mongooseDatabaseProviders: Provider[] = [
   {
     provide: PROVIDERS.DATABASE_CONNECTION,
     useFactory: (configService: AppConfigService): Promise<typeof mongoose> =>
       MongooseConnectionFactory.create(configService),
     inject: [AppConfigService],
   },
-];
-
-export const gameProviders: Provider[] = [
   {
     provide: PROVIDERS.GAME_MODEL,
     useFactory: GameMongoooseModelFactory.create,
@@ -27,7 +27,22 @@ export const gameProviders: Provider[] = [
   },
 ];
 
+export const gameApplicationProviders: Provider[] = [
+  {
+    provide: PROVIDERS.GAME_CREATE_USECASE,
+    useClass: CreateGameUseCase,
+  },
+  {
+    provide: PROVIDERS.GAME_MAKEMOVE_USECASE,
+    useClass: MakeMoveUseCase,
+  },
+  {
+    provide: PROVIDERS.GAME_GET_FINISHED_USECASE,
+    useClass: GetFinishedGamesUseCase,
+  },
+];
+
 export const allProviders: Provider[] = [
-  ...databaseProviders,
-  ...gameProviders,
+  ...mongooseDatabaseProviders,
+  ...gameApplicationProviders,
 ];

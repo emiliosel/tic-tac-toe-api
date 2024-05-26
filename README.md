@@ -34,6 +34,12 @@ $ yarn install
 
 ## Running the app
 
+The application is working with mongodb as database. Fisrt you need to run docker and execute:
+
+```bash
+$ docker-compose up
+```
+
 ```bash
 # development
 $ yarn run start
@@ -42,8 +48,13 @@ $ yarn run start
 $ yarn run start:dev
 
 # production mode
+$ yarn run build
 $ yarn run start:prod
 ```
+
+## Api documentation
+
+[Swagger](http://localhost:3001/api)
 
 ## Test
 

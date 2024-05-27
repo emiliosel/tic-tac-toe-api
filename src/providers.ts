@@ -8,6 +8,7 @@ import { PROVIDERS } from './constants';
 import { CreateGameUseCase } from './application/use-cases/create-game.usecase';
 import { MakeMoveUseCase } from './application/use-cases/make-move.usecase';
 import { GetFinishedGamesUseCase } from './application/use-cases/get-finished-games.usecase';
+import { UpsertGameUseCase } from './application/use-cases/upsert-game.usecase';
 
 export const mongooseDatabaseProviders: Provider[] = [
   {
@@ -39,6 +40,10 @@ export const gameApplicationProviders: Provider[] = [
   {
     provide: PROVIDERS.GAME_GET_FINISHED_USECASE,
     useClass: GetFinishedGamesUseCase,
+  },
+  {
+    provide: PROVIDERS.GAME_UPSERT_USECASE,
+    useClass: UpsertGameUseCase,
   },
 ];
 

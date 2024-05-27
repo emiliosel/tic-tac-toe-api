@@ -3,6 +3,7 @@ import {
   Controller,
   Get,
   Inject,
+  Patch,
   Post,
   Put,
   Query,
@@ -23,6 +24,8 @@ import { PROVIDERS } from '../../constants';
 import { GetFinishedGamesUseCase } from '../../application/use-cases/get-finished-games.usecase';
 import { GetFinishedGamesInputDto } from '../../application/dtos/get-finished-games.input.dto';
 import { GetFinishedGamesOutputDto } from '../../application/dtos/get-finished-games.output.dto';
+import { UpserGameInputDto } from '../../application/dtos/upsert-game.input.dto';
+import { UpsertGameUseCase } from '../../application/use-cases/upsert-game.usecase';
 
 @ApiTags('games')
 @Controller('games')
@@ -36,6 +39,9 @@ export class GameRestController {
 
     @Inject(PROVIDERS.GAME_GET_FINISHED_USECASE)
     private readonly getFinishedGamesUseCase: GetFinishedGamesUseCase,
+
+    @Inject(PROVIDERS.GAME_UPSERT_USECASE)
+    private readonly upsertGameUseCase: UpsertGameUseCase,
   ) {}
 
   @Post()
@@ -49,6 +55,19 @@ export class GameRestController {
     @Body() createGameDto: CreateGameInputDto,
   ): Promise<CreateGameOutputDto> {
     return await this.createGameUseCase.execute(createGameDto);
+  }
+
+  @Patch()
+  @ApiOperation({ summary: 'Create or update game' })
+  @ApiResponse({
+    status: 201,
+    description: 'Game created or updated successfully.',
+    type: CreateGameOutputDto,
+  })
+  async upsertGame(
+    @Body() upsertGameDto: UpserGameInputDto,
+  ): Promise<CreateGameOutputDto> {
+    return await this.upsertGameUseCase.execute(upsertGameDto);
   }
 
   @Put('/move')
